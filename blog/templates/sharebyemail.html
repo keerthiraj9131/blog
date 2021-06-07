@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block titleblock%}{{post.title}}{% endblock %}
+{% block contents%}
+
+{% if sent == True%}
+    <h4>{{post.title}} Post is Successfully Sent</h4>
+{% else %}
+    <h3>{{post.title | upper}}<br></h3></a>
+    <form method="post">
+        {{form.as_p}}
+        {%csrf_token%}
+        <input type="submit" class="btn btn-primary" value="Share By Email">
+    </form>
+{% endif %}
+{% endblock %}
